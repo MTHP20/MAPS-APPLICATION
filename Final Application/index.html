@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Offline Mapping Application</title>
+    <link rel="icon" type="image/map-icon" href="./src/favicon.ico">
+    <link rel="stylesheet" href="./src/styles.css">
+    <link rel="stylesheet" href="./leaflet/leaflet.css">
+</head>
+
+<body>
+    <div id="map"></div>
+    <canvas id="radiusCanvas"></canvas>
+    <div id="floating-window"></div>
+    <div class="searchContainer" id="searchContainer">
+        <input type="text" id="searchInput" placeholder="Search here..." autocomplete="off">
+        <button onclick="searchLocation()">🔍</button>
+        <button onclick="searchRestaurants()">🍽️ RESTAURANTS</button>
+        <button onclick="searchServices()">⛽ PETROL SERVICES</button>
+        <button onclick="searchSupermarkets()">🛒 SUPERMARKETS</button>
+        <button onclick="searchHotels()">🏨 HOTELS</button>
+        <button onclick="searchTowns()">🏬 SHOPPING CENTRES</button>
+        <div id="previousSearches" class="previous-searches"></div>
+        <div class="extraSearchContainer">
+            <button onclick="searchMore()">Search for More</button>
+            <div id="overlay" class="overlay"></div>
+            <div id="floating-searchWindow" class="floating-searchWindow">
+                <form autocomplete="off">
+                    <div class="autocomplete">
+                        <input type="text" id="myInput" placeholder="Search for More...">
+                    </div>
+                </form>
+                <button id="closeButton">X</button>
+            </div>
+        </div>
+    </div>
+    <div class="sidebarContainer">
+        <div class="sidebar" id="sidebar">
+            <div class="links">
+                <a href="index.html">HOME</a>
+            </div>
+            <br><hr><br>
+            <div class="links">
+                <a href="#" onclick="showSavedLocations()">SAVED<br>LOCATIONS</a>
+                <div id="savedLocations" class="savedLocationsContainer"></div>
+            </div>
+        </div>
+        <div class="expand-btn" onclick="toggleSidebar()">☰</div>
+    </div>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <script src="./src/app.js"></script>
+    <script src="./src/dynamicSearch.js"></script>
+    <script src="./src/dynamicRadius.js"></script>
+    <script src="./src/savedLocation.js"></script>
+    <script src="./leaflet/leaflet-src.js"></script>
+</body>
+
+</html>

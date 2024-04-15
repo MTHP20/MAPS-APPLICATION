@@ -1,0 +1,288 @@
+body,
+html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+  font-family: Inter;
+}
+
+.leaflet-container {
+  cursor: default !important;
+}
+
+#map {
+  height: 100%;
+  transition: margin-left 0.5s;
+}
+
+#floating-window {
+  display: flex;
+  position: fixed;
+  bottom: -100px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: white;
+  text-align: center;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: #6A69F5 0 10px 20px -10px;
+  z-index: 1000;
+  display: none;
+  animation: slide-in 0.5s forwards;
+}
+
+.previous-search {
+  padding: 20px 10px;
+  cursor: pointer;
+  display: block;
+  font-family: Inter;
+  font-size: 16px;
+}
+
+#previousSearches {
+  position: absolute;
+  width: 225px;
+  box-shadow: #6A69F5 0 10px 20px -10px;
+  background-color: #fff;
+  z-index: 1000;
+  max-height: 375px;
+  overflow-y: auto;
+}
+
+.remove-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  color: #333333;  
+  font-family: Inter; 
+  font-size: 16px; 
+  transition: background-color 0.2s ease;
+  vertical-align: middle;
+}
+
+#remove-button:hover {
+  background-color: #d6d6d6;
+}
+
+
+#searchInput, #myInput {
+  background: #6A69F5;
+  border-radius: 999px;
+  box-shadow: #6A69F5 0 10px 20px -10px;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  font-family: Inter;
+  font-size: 15px;
+  font-weight: 700;
+  width: 225px;
+  padding: 8px 18px;
+  outline: none;
+  border: none;
+}
+
+#searchInput::placeholder,
+#myInput::placeholder {
+  color: #FFFFFF;
+}
+
+#searchInput:hover,
+#searchInput:focus {
+  box-shadow: #6A69F5 0 10px 20px -10px;
+}
+
+Button {
+  background: #6A69F5;
+  border-radius: 999px;
+  box-shadow: #6A69F5 0 10px 20px -10px;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  font-family: Inter;
+  font-size: 15px;
+  font-weight: 700;
+  outline: 0 solid transparent;
+  padding: 8px 18px;
+  touch-action: manipulation;
+  border: 0;
+  transition: transform 0.2s ease;
+}
+
+Button:active {
+  transform: translateY(1px);
+}
+
+.sidebar {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #f1f1f1;
+  box-shadow: #6A69F5 0 10px 20px -10px;
+  overflow-x: hidden;
+  transition: width 0.5s ease;
+  padding-top: 60px;
+  z-index: 1000;
+}
+
+.sidebar a {
+  padding: 10px 15px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #000;
+  display: block;
+  white-space: nowrap;
+}
+
+.sidebar a:hover {
+  color: #555;
+}
+
+.links {
+  text-align: center;
+  position: relative;
+}
+
+.saved-location {
+  color: #6A69F5;
+}
+
+.saved-location:hover {
+  background-color: white;
+}
+
+.searchContainer {
+  position: absolute;
+  top: 25px;
+  left: 50px;
+  transition: margin-left 0.5s ease;
+  z-index: 1000;
+}
+
+.extraSearchContainer {
+  margin-top: 10px;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 9998;
+  display: none;
+}
+
+.floating-searchWindow {
+  position: fixed;
+  top: 15%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 50px;
+  box-shadow: #6A69F5 0 10px 20px -10px;
+  z-index: 9999;
+  display: none;
+}
+
+#closeButton {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  padding: 20px;
+  color: #6A69F5;
+  background-color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  padding: 0;
+  line-height: 1;
+}
+
+.autocomplete {
+  position: relative;
+  display: inline-block;
+}
+
+.autocomplete-items {
+  position: absolute;
+  border: 1px solid #6A69F5;
+  border-radius: 4px;
+  background-color: #FFFFFF; 
+  z-index: 99;
+  width: 100%;
+}
+
+.autocomplete-items div {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.autocomplete-items div:hover {
+  background-color: #6A69F5;
+  color: #FFFFFF;
+}
+
+.autocomplete-active {
+  background-color: DodgerBlue !important; 
+  color: #ffffff; 
+}
+
+#radiusCanvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 1000;
+  display: none;
+}
+
+.expand-btn {
+  font-size: 20px;
+  cursor: pointer;
+  position: absolute;
+  top: 27px;
+  left: 10px;
+  z-index: 1000;
+  transition: left 0.5s;
+}
+
+.expand-btn.active {
+  left: 210px;
+}
+
+.custom-marker {
+  font-size: 18px;
+  background-color: white;
+  border-radius: 50%;
+  text-align: center;
+  line-height: -2;
+}
+
+hr {
+  width: 80%;
+  margin: 0 auto;
+}
+
+@keyframes slide-in {
+  from {
+    bottom: -100px;
+  }
+
+  to {
+    bottom: 20px;
+  }
+}
+
+@keyframes slide-out {
+  from {
+    bottom: 20px;
+  }
+
+  to {
+    bottom: -100px;
+  }
+}
