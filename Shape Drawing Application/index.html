@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Draw Shapes</title>
+</head>
+<body>
+    <div>
+        <h1>This application can draw shapes using HTML5 Canvas</h1>
+            <p>Please select one of the following:</p>
+            <input type="radio" name="shape" id="rectangle" value="rectangle" onchange="selectShape()">Rectangle<br />
+            <input type="radio" name="shape" id="circle" value="circle" onchange="selectShape()" />Circle<br />
+            <input type="radio" name="shape" id="triangle" value="triangle" onchange="selectShape()" />Triangle<br />
+            <button onclick="clearCanvas()">Clear Canvas </button>
+    </div>
+    <canvas id="canvas" width="500" height="500" style="border:1px solid #000;"></canvas>
+</body>
+    <script src="./src/scriptShapes.js"></script>
+</html>
